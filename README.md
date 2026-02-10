@@ -1,5 +1,6 @@
 # exercism-solutions
 
+## Описание
 Этот репозиторий содержит мои решения задач с платформы [Exercism](https://exercism.org/).
 
 Цель репозитория — практиковаться в языке программирования Cи, фиксировать прогресс и сохранять историю решений.  
@@ -17,6 +18,7 @@
 Репозиторий находится в активной разработке.  
 Задачи будут добавляться по мере прохождения треков на Exercism.
 
+## Description
 
 This repository contains my solutions to exercises from [Exercism](https://exercism.org/).
 
