@@ -6,26 +6,16 @@
 char *to_rna(const char *dna)
 {
     char *result = malloc(strlen(dna) + 1);
-    int j = 0;
 
-    for (int i = 0; dna[i] != '\0'; ++i) {
-        if (dna[i] == 'G') {
-            result[j] = 'C';
-            j++;
-        }
-        if (dna[i] == 'C') {
-            result[j] = 'G';
-            j++;
-        }
-        if (dna[i] == 'T') {
-            result[j] = 'A';
-            j++;
-        }
-        if (dna[i] == 'A') {
-            result[j] = 'U';
-            j++;
-        }
+    char map[256] = {0};
+    map['G'] = 'C';
+    map['C'] = 'G';
+    map['T'] = 'A';
+    map['A'] = 'U';
+    int i = 0;
+    for (; dna[i] != '\0'; ++i){
+        result[i] = map[(unsigned char)dna[i]];
     }
-    result[j] = '\0';
+    result[i] = '\0';
     return result;
 }
