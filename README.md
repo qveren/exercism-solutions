@@ -24,13 +24,13 @@ The goal is to practice different programming languages, track progress, and kee
 
 This repository does not claim to have "perfect" solutions — the focus is on learning and skill growth.
 
-### Principles
+## Principles
 
 - Solutions are written independently  
 - Not all solutions are the most optimal — intentionally  
 - Code may be updated after feedback or as skills improve  
 
-### Status
+## Status
 
 The repository is actively under development.  
 Languages and exercises will be added as I progress through Exercism tracks.
