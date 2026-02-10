@@ -2,7 +2,7 @@
 
 Этот репозиторий содержит мои решения задач с платформы [Exercism](https://exercism.org/).
 
-Цель репозитория — практиковаться в разных языках программирования, фиксировать прогресс и сохранять историю решений.  
+Цель репозитория — практиковаться в языке программирования Cи, фиксировать прогресс и сохранять историю решений.  
 
 Репозиторий не претендует на «идеальные» решения — важен процесс обучения и рост навыков.
 
@@ -15,12 +15,12 @@
 ## Статус
 
 Репозиторий находится в активной разработке.  
-Языки и задачи будут добавляться по мере прохождения треков на Exercism.
-_____________________________________________________________________________
+Задачи будут добавляться по мере прохождения треков на Exercism.
+
 
 This repository contains my solutions to exercises from [Exercism](https://exercism.org/).
 
-The goal is to practice different programming languages, track progress, and keep a history of my solutions.
+The goal is to practice the C programming language, track progress, and keep a history of my solutions.
 
 This repository does not claim to have "perfect" solutions — the focus is on learning and skill growth.
 
@@ -33,4 +33,4 @@ This repository does not claim to have "perfect" solutions — the focus is on l
 ## Status
 
 The repository is actively under development.  
-Languages and exercises will be added as I progress through Exercism tracks.
+Exercises will be added as I progress through Exercism tracks.
