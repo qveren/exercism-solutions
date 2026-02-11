@@ -1,6 +1,4 @@
 #include "resistor_color_duo.h"
-#include <stdlib.h>
-
 
 uint16_t color_code(resistor_band_t *colors)
 {
