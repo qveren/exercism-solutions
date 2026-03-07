@@ -2,19 +2,20 @@
 
 unsigned int square_root(unsigned int x)
 {
-    unsigned int low = 1, high = x;
-    unsigned int mid = (low + high) / 2;
-    for (unsigned int i = 0; i < x; i++) {
-        if ((mid * mid) >= x) {
-            high = mid + 1;
-        }
-        else if ((mid * mid) <= x) {
-            low = mid;
-        }
-        else if ((mid * mid) == x){
-            return mid;
-        }
-        mid = (low + high) / 2;
+    unsigned int bit = 1 << 30, result = 0, remainder = x;
+    while (bit > x) {
+        bit >>= 2;
     }
-    return mid;
+    while (bit != 0) {
+        if (remainder >= result + bit) {
+            remainder -= (result + bit);
+            result = (result >> 1) + bit;
+            bit >>= 2;
+        }
+        else {
+            bit >>= 2;
+            result >>= 1;
+        }
+    }
+    return result;
 }
