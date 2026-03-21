@@ -84,7 +84,17 @@ list_element_t foldr_list(list_t *list, list_element_t initial,
                                                   list_element_t));
 
 // reverse the elements of the list
-list_t *reverse_list(list_t *list);
+list_t *reverse_list(list_t *list)
+{
+    if (!list) return NULL;
+    list_t *new_list = malloc(sizeof(list_t) + list->length * sizeof(list_element_t));
+    if (!new_list) return NULL;
+    for (int i = 0; i < list->length; ++i) {
+        new_list->elements[list->length - 1 - i] = list->elements[i];
+    }
+    new_list->length = list->length;
+    return new_list;
+}
 
 // destroy the entire list
 // list will be a dangling pointer after calling this method on it
