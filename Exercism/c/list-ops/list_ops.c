@@ -60,7 +60,18 @@ size_t length_list(list_t *list)
 
 // return a list of elements whose values equal the list value transformed by
 // the mapping function
-list_t *map_list(list_t *list, list_element_t (*map)(list_element_t));
+list_t *map_list(list_t *list, list_element_t (*map)(list_element_t))
+{
+    if (!list) return NULL;
+    list_t *new_list = malloc(sizeof(list_t) + list->length * sizeof(list_element_t));
+    if (!new_list) return NULL;
+    for (int i = 0; i < list->length; ++i) {
+        new_list->elements[i] = map(list->elements[i]);
+    }
+    new_list->length = list->length;
+
+    return new_list;
+}
 
 // folds (reduces) the given list from the left with a function
 list_element_t foldl_list(list_t *list, list_element_t initial,
