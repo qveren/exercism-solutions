@@ -76,12 +76,28 @@ list_t *map_list(list_t *list, list_element_t (*map)(list_element_t))
 // folds (reduces) the given list from the left with a function
 list_element_t foldl_list(list_t *list, list_element_t initial,
                           list_element_t (*foldl)(list_element_t,
-                                                  list_element_t));
+                                                  list_element_t))
+{
+    if (!list) return initial;
+    list_element_t accumulator = initial;
+    for (int i = 0; i < list->length; ++i) {
+        accumulator = foldl(accumulator, list->elements[i]);
+    }
+    return accumulator;
+}
 
 // folds (reduces) the given list from the right with a function
 list_element_t foldr_list(list_t *list, list_element_t initial,
                           list_element_t (*foldr)(list_element_t,
-                                                  list_element_t));
+                                                  list_element_t))
+{
+    if (!list) return initial;
+    list_element_t accumulator = initial;
+    for (int i = list->length - 1; i >= 0; --i) {
+        accumulator = foldr(list->elements[i], accumulator);
+    }
+    return accumulator;
+}
 
 // reverse the elements of the list
 list_t *reverse_list(list_t *list)
