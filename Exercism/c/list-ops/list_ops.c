@@ -5,10 +5,9 @@
 // constructs a new list
 list_t *new_list(size_t length, list_element_t elements[])
 {
-    if (elements == 0 || length == 0) return NULL;
+    if (elements == NULL && length > 0) return NULL;
     list_t *list = malloc(sizeof(list_t) + length * sizeof(list_element_t));
     if (!list) return NULL;
-
     list->length = length;
     memcpy(list->elements, elements, length * sizeof(list_element_t));
     return list;
@@ -19,7 +18,6 @@ list_t *append_list(list_t *list1, list_t *list2)
 {
     if (list1 == NULL || list2 == NULL) return NULL;
     size_t full_length = list1->length + list2->length;
-    size_t full_size = sizeof(list_t) + full_length * sizeof(list_element_t);
     list_t *new_list = malloc(sizeof(list_t) + full_length * sizeof(list_element_t));
     if (!new_list) return NULL;
     new_list->length = full_length;
@@ -31,6 +29,7 @@ list_t *append_list(list_t *list1, list_t *list2)
 // filter list returning only values that satisfy the filter function
 list_t *filter_list(list_t *list, bool (*filter)(list_element_t))
 {
+    if (!list) return NULL;
     size_t count = 0;
     for (size_t i = 0; i < list->length; ++i) {
         if (filter(list->elements[i])) {
@@ -65,7 +64,7 @@ list_t *map_list(list_t *list, list_element_t (*map)(list_element_t))
     if (!list) return NULL;
     list_t *new_list = malloc(sizeof(list_t) + list->length * sizeof(list_element_t));
     if (!new_list) return NULL;
-    for (int i = 0; i < list->length; ++i) {
+    for (size_t i = 0; i < list->length; ++i) {
         new_list->elements[i] = map(list->elements[i]);
     }
     new_list->length = list->length;
@@ -80,7 +79,7 @@ list_element_t foldl_list(list_t *list, list_element_t initial,
 {
     if (!list) return initial;
     list_element_t accumulator = initial;
-    for (int i = 0; i < list->length; ++i) {
+    for (size_t i = 0; i < list->length; ++i) {
         accumulator = foldl(accumulator, list->elements[i]);
     }
     return accumulator;
@@ -92,9 +91,10 @@ list_element_t foldr_list(list_t *list, list_element_t initial,
                                                   list_element_t))
 {
     if (!list) return initial;
+    if (list->length == 0) return initial; 
     list_element_t accumulator = initial;
-    for (int i = list->length - 1; i >= 0; --i) {
-        accumulator = foldr(list->elements[i], accumulator);
+    for (size_t i = list->length; i > 0; --i) {
+        accumulator = foldr(list->elements[i-1], accumulator);
     }
     return accumulator;
 }
@@ -105,7 +105,7 @@ list_t *reverse_list(list_t *list)
     if (!list) return NULL;
     list_t *new_list = malloc(sizeof(list_t) + list->length * sizeof(list_element_t));
     if (!new_list) return NULL;
-    for (int i = 0; i < list->length; ++i) {
+    for (size_t i = 0; i < list->length; ++i) {
         new_list->elements[list->length - 1 - i] = list->elements[i];
     }
     new_list->length = list->length;
